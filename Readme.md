@@ -147,7 +147,7 @@ This project implements a robust deep learning pipeline for classifying kidney d
 ### Deployment Process
 
 1. **Build Docker Image**
-   ```bash
+'   ```bash
    docker build -t kidney-classifier .
    ```
 
@@ -236,13 +236,5 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - AWS for cloud infrastructure
 - MLflow and DVC communities
 
-## 📞 Support
-
-For questions and support:
-- Create an issue in the GitHub repository
-- Reach out through social media channels
-- Check the documentation for common troubleshooting steps
-
----
 
 ⭐ **Star this repository if you find it helpful!** ⭐
