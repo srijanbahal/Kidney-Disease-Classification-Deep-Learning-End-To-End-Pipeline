@@ -1,8 +1,47 @@
+# params.yaml
+
+# Global parameters that are common across all experiments
+ARTIFACTS_ROOT: artifacts
+CLASSES: 2 # e.g., Normal, Tumor
 AUGMENTATION: True
-IMAGE_SIZE: [224, 224, 3] # as per VGG 16 model
-BATCH_SIZE: 16
-INCLUDE_TOP: False
-EPOCHS: 1
-CLASSES: 2
-WEIGHTS: imagenet
-LEARNING_RATE: 0.01
+
+# --- Model & Experiment Configurations ---
+MODELS:
+  resnet50:
+    NAME: ResNet50
+    # --- Common Architecture Parameters for all ResNet50 experiments ---
+    PARAMS:
+      IMAGE_SIZE: [224, 224, 3]
+      INCLUDE_TOP: False
+      WEIGHTS: imagenet
+
+    # --- Specific Training Experiments for ResNet50 ---
+    EXPERIMENTS:
+      baseline: # Experiment 1: Simple augmentation, no class weights
+        LEARNING_RATE: 0.001
+        EPOCHS: 20
+        BATCH_SIZE: 32
+        USE_CLASS_WEIGHTbS: False # The key difference
+
+
+      weighted: # Experiment 2: With class weights to handle imbalance
+        LEARNING_RATE: 0.001
+        EPOCHS: 25 # May need more epochs when weights are used
+        BATCH_SIZE: 16
+        USE_CLASS_WEIGHTS: True # The key difference
+
+  swin_transformer:
+    NAME: SwinTransformer
+    # --- Common Architecture Parameters for all Swin Transformer experiments ---
+    PARAMS:
+      IMAGE_SIZE: [224, 224, 3]
+      # Add other swin-specific architecture params here if needed
+      # e.g., PATCH_SIZE: 4, WINDOW_SIZE: 7
+
+    # --- Specific Training Experiments for Swin Transformer ---
+    EXPERIMENTS:
+      baseline:
+        LEARNING_RATE: 0.0005
+        EPOCHS: 15
+        BATCH_SIZE: 8
+        USE_CLASS_WEIGHTS: False

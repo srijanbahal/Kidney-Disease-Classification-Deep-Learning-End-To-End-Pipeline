@@ -7,7 +7,7 @@ class DataIngestionConfig:
     root_dir: Path
     source_URL: str
     local_data_file: Path
-    unzip_dir: Path
+    # unzip_dir: Path
 
 
 
@@ -16,6 +16,7 @@ class PrepareBaseModelConfig:
     root_dir: Path
     base_model_path: Path
     updated_base_model_path: Path
+    model_name: str # For Specifying the model
     params_image_size: list
     params_learning_rate: float
     params_include_top: bool
@@ -30,6 +31,7 @@ class TrainingConfig:
     trained_model_path: Path
     updated_base_model_path: Path
     training_data: Path
+    model_name: str # For Specifying the Model
     params_epochs: int
     params_batch_size: int
     params_is_augmentation: bool
